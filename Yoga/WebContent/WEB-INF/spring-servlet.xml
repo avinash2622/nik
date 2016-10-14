@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+		
+	<!-- Configuring context annotation -->
+	<context:annotation-config></context:annotation-config>
+	
+	<!-- Configuring bean package level component scan -->
+	<context:component-scan base-package="com.app"></context:component-scan>
+	
+	<!-- Defining the spring mvc using annotation -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<!-- Defing resources location for bootsrap css js -->
+	<mvc:resources mapping="/resource/**" location="resource/" />
+	
+	<!-- Jsp page view resolver -->
+	<bean id="viewResolver"
+	class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+	p:prefix="/WEB-INF/views/" p:suffix=".jsp"
+	p:viewClass="org.springframework.web.servlet.view.JstlView"
+	></bean>
+	
+	<!-- creating hibernate spring database connection -->
+	<import resource="classpath:/hibernate-persistence.xml"/>
+	
+</beans>
